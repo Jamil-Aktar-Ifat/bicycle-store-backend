@@ -72,3 +72,36 @@ export const createOrder = async (
   }
 };
 
+export const getRevenue = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    // Use MongoDB aggregation pipeline to calculate total revenue
+    const revenue = await Order.aggregate([
+      {
+        $group: {
+          _id: null, // Group all documents together
+          totalRevenue: { $sum: "$totalPrice" }, // Sum the totalPrice field
+        },
+      },
+    ]);
+
+    // Return the revenue or 0 if no orders exist
+    const totalRevenue = revenue.length > 0 ? revenue[0].totalRevenue : 0;
+
+    res.status(200).json({
+      message: "Revenue calculated successfully",
+      status: true,
+      data: {
+        totalRevenue,
+      },
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: "Failed to calculate revenue",
+      success: false,
+      error: error.message,
+    });
+  }
+};
