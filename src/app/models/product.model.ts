@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model} from "mongoose";
 
 export enum BicycleType {
   Mountain = "Mountain",
@@ -8,7 +8,7 @@ export enum BicycleType {
   Electric = "Electric",
 }
 
-interface IProduct extends Document {
+interface IProduct {
   name: string;
   brand: string;
   price: number;

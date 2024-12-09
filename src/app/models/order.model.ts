@@ -1,6 +1,6 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model } from "mongoose";
 
-interface IOrder extends Document {
+interface IOrder {
   email: string;
   product: Schema.Types.ObjectId;
   quantity: number;
