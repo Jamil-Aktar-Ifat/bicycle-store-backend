@@ -5,7 +5,7 @@ import { Order } from "../models/order.model";
 export const createOrder = async (
   req: Request,
   res: Response
-): Promise<void> => {
+) => {
   try {
     const { email, product, quantity } = req.body;
 
@@ -57,7 +57,7 @@ export const createOrder = async (
     await productDetails.save();
 
     // Respond with success
-    res.status(201).json({
+    res.status(200).json({
       message: "Order created successfully",
       success: true,
       data: newOrder,
@@ -75,7 +75,7 @@ export const createOrder = async (
 export const getRevenue = async (
   req: Request,
   res: Response
-): Promise<void> => {
+) => {
   try {
     // Use MongoDB aggregation pipeline to calculate total revenue
     const revenue = await Order.aggregate([

@@ -8,6 +8,7 @@ export enum BicycleType {
   Electric = "Electric",
 }
 
+// product interface
 interface IProduct {
   name: string;
   brand: string;
@@ -18,6 +19,8 @@ interface IProduct {
   inStock: boolean;
 }
 
+
+// product schema
 const productSchema = new Schema<IProduct>(
   {
     name: { type: String, required: true },

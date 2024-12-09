@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { Product } from "../models/product.model";
 
+
+// create new product while handle any error
 export const createProduct = async (req: Request, res: Response) => {
   try {
     const product = await Product.create(req.body);
@@ -18,6 +20,8 @@ export const createProduct = async (req: Request, res: Response) => {
   }
 };
 
+
+// fetch all the products from the db 
 export const getProducts = async (req: Request, res: Response) => {
   try {
     const products = await Product.find(req.body);
@@ -26,7 +30,6 @@ export const getProducts = async (req: Request, res: Response) => {
       success: true,
       data: products,
     });
-    // console.log(products);
   } catch (error) {
     res.status(500).json({
       message: "Failed to retrieve products!",
@@ -36,6 +39,8 @@ export const getProducts = async (req: Request, res: Response) => {
   }
 };
 
+
+// fetch a single producted from the db
 export const getSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -61,6 +66,8 @@ export const getSingleProduct = async (req: Request, res: Response) => {
   }
 };
 
+
+// update a single product
 export const updateSingleProduct = async (req: Request, res: Response) => {
   try {
     const product = await Product.findByIdAndUpdate(
@@ -82,6 +89,8 @@ export const updateSingleProduct = async (req: Request, res: Response) => {
   }
 };
 
+
+// delete a product
 export const deleteProduct = async (req: Request, res: Response) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.productId);

@@ -9,11 +9,12 @@ import {
 
 const router = Router();
 
-router.post("/", createProduct);
-router.get("/", getProducts);
-router.get('/', )
-router.get("/:productId", getSingleProduct);
-router.put("/:productId", updateSingleProduct);
-router.delete("/:productId", deleteProduct);
+
+// CRUD operation routes of Products
+router.post("/", createProduct);  // create new product
+router.get("/", getProducts); // fetch all the products
+router.get("/:productId", getSingleProduct); // fetch a specific product by matching id
+router.put("/:productId", updateSingleProduct); // find a product by id and update the data
+router.delete("/:productId", deleteProduct); // delete a product
 
 export const ProductRoutes = router;

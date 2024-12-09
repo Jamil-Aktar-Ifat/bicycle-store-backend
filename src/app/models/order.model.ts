@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 
+// order interface
 interface IOrder {
   email: string;
   product: Schema.Types.ObjectId;
@@ -7,6 +8,8 @@ interface IOrder {
   totalPrice: number;
 }
 
+
+// order schema
 const orderSchema = new Schema<IOrder>(
   {
     email: { type: String, required: true },
